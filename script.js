@@ -64,14 +64,15 @@ function openMobileNav(){
 //function for email validation
 function emailValidation(){
   document.querySelector('.newsletter-submit').addEventListener('click',(event)=>{
-    let emailInput = event.currentTarget.parentElement.firstElementChild.firstElementChild.value
-    if( validator.isEmail(emailInput) && !(emailInput==='') ){
+    let emailInput = event.currentTarget.parentElement.firstElementChild.firstElementChild
+    if( validator.isEmail(emailInput.value) && !(emailInput.value==='') ){
       window.location.href = '/';
     }
     else{
       let emailErrMsg = document.querySelector('.email-error')
       emailErrMsg.classList.toggle('show')
-      setTimeout(()=>{emailErrMsg.classList.toggle('show')},2000)
+      emailInput.value = ''
+      setTimeout(()=>{emailErrMsg.classList.toggle('show')},1000)
     }
   })
 }emailValidation()
